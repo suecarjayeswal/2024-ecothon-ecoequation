@@ -38,7 +38,6 @@ import { MapboxExportControl, Size, PageOrientation, Format, DPI} from "@watergi
 // import '@watergis/mapbox-gl-export/css/styles.css';
 
 const Maps = () => {
-  mapboxgl.accessToken = process.env.REACT_APP_TOKEN;
   const mapContainer = useRef(null);
   const map = useRef(null);
   const draw = useRef(null);
@@ -47,97 +46,80 @@ const Maps = () => {
   const [zoom, setZoom] = useState(12);
 
   useEffect(() => {
-    if (map.current) return; // initialize map only once
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v12',
-      center: [lng, lat],
-      zoom: zoom
-    });
-    map.current.on('mousemove', (e) => {
-      const { lng, lat } = e.lngLat;
-      setLng(lng.toFixed(4));
-      setLat(lat.toFixed(4));
-    });
-
-    // Add fullscreen control
-    map.current.addControl(new mapboxgl.FullscreenControl(),'bottom-right');
-
-    // Add Zoom control
-    map.current.addControl(new mapboxgl.NavigationControl(),'bottom-left');
-
-    // Add Compass control
-    // map.current.addControl(new CompassControl({ instant: true }), 'bottom-right');
-
-    // Add Geocoder control for search box
-    const geocoder = new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl,
-      placeholder: 'Search for a location',
-      marker: true, // Disable default marker
-      bbox: [-180, -90, 180, 90], // Limit search to the world bounds
-      flyTo: true, // Do not fly to the searched location
-      zoom: 10 // Set the zoom level after a location is found
-    });
-
-    // Add custom CSS class to the Geocoder input container
-    geocoder.on('result', function (e) {
-      document.querySelector('.mapboxgl-ctrl-geocoder--input').classList.add('custom-geocoder-input');
-    });
-
-    map.current.addControl(geocoder);
-
-    // Initialize the drawing tool
-    draw.current = new MapboxDraw({
-      displayControlsDefault: true,
-      controls: {
-        polygon: true,
-        trash: true
-      }
-    });
-
-    map.current.addControl(draw.current);
-
-    map.current.on('draw.create', updateArea);
-    map.current.on('draw.delete', updateArea);
-    map.current.on('draw.update', updateArea);
-
-    // Add Tooltip control
-    // map.current.on('mousemove', (e) => {
-    //   const features = map.current.queryRenderedFeatures(e.point);
-    //   if (features.length > 0) {
-    //     const tooltip = new mapboxgl.Popup()
-    //       .setLngLat(e.lngLat)
-    //       .setHTML(`<p>${features[0].properties.name}</p>`)
-    //       .addTo(map.current);
-    //   } else {
-    //     map.current.getCanvas().style.cursor = '';
-    //   }
-    // });
-
-    // Add Language control
-    map.current.addControl(new LanguageControl(), 'top-right');
-
-    // Add Styles control
-    map.current.addControl(new StylesControl({
-      compact: true
-    }), 'bottom-left');
-
+    mapboxgl.accessToken = process.env.REACT_APP_TOKEN;
   
-    map.current.addControl(new RulerControl(), 'top-right');
+    const initializeMap = () => {
+      map.current = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [lng, lat],
+        zoom: zoom
+      });
+  
+      map.current.on('load', () => {
+        addMapControls();
+        initializeDraw();
+      });
+  
+      map.current.on('mousemove', (e) => {
+        const { lng, lat } = e.lngLat;
+        setLng(lng.toFixed(4));
+        setLat(lat.toFixed(4));
+      });
+    };
 
-    // create control with specified options
-    map.current.addControl(new MapboxExportControl({
+    const addMapControls = () => {
+      map.current.addControl(new mapboxgl.FullscreenControl(), 'bottom-right');
+      map.current.addControl(new mapboxgl.NavigationControl(), 'bottom-left');
+      map.current.addControl(new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl,
+        placeholder: 'Search for a location',
+        marker: true,
+        bbox: [-180, -90, 180, 90],
+        flyTo: true,
+        zoom: 10
+      }), 'top-right');
+      // Add StylesControl here, but disable it until style is loaded
+      // map.current.addControl(new StylesControl({ compact: true }), 'bottom-left');
+      map.current.addControl(new RulerControl(), 'top-right');
+      map.current.addControl(new MapboxExportControl({
         PageSize: Size.A3,
         PageOrientation: PageOrientation.Portrait,
         Format: Format.PNG,
         DPI: DPI[96],
         Crosshair: true,
         PrintableArea: true,
-        accessToken:mapboxgl.accessToken
-    }), 'top-right');
-
-  }, []);
+        accessToken: mapboxgl.accessToken
+      }), 'top-right');
+    };
+  
+    const initializeDraw = () => {
+      draw.current = new MapboxDraw({
+              displayControlsDefault: true,
+              controls: {
+                polygon: true,
+                trash: true
+              }
+      });
+      map.current.addControl(draw.current);
+  
+      map.current.on('draw.create', updateArea);
+      map.current.on('draw.delete', updateArea);
+      map.current.on('draw.update', updateArea);
+    };
+  
+    initializeMap();
+    enableControls();
+    return () => {
+      map.current.remove();
+    };
+  }, []);  
+  
+  const enableControls = () => {
+    // Re-enable controls here
+    map.current.addControl(new StylesControl({ compact: true }), 'bottom-left');
+  };
 
   function updateArea(e) {
     const data = draw.current.getAll();
