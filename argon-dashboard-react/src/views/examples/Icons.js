@@ -59,7 +59,7 @@ const Icons = () => {
                       >
                         <div>
                           <i className="ni ni-active-40" />
-                          <span>active-40</span>
+                          <span>data1</span>
                         </div>
                       </button>
                     </CopyToClipboard>

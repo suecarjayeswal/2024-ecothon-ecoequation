@@ -49,16 +49,16 @@ const Tables = () => {
           <div className="col">
             <Card className="shadow">
               <CardHeader className="border-0">
-                <h3 className="mb-0">Card tables</h3>
+                <h3 className="mb-0">Table</h3>
               </CardHeader>
               <Table className="align-items-center table-flush" responsive>
                 <thead className="thead-light">
                   <tr>
                     <th scope="col">Project</th>
-                    <th scope="col">Budget</th>
+                    <th scope="col">Region</th>
                     <th scope="col">Status</th>
                     <th scope="col">Users</th>
-                    <th scope="col">Completion</th>
+                    <th scope="col">Response rate</th>
                     <th scope="col" />
                   </tr>
                 </thead>
@@ -78,12 +78,12 @@ const Tables = () => {
                         </a>
                         <Media>
                           <span className="mb-0 text-sm">
-                            Argon Design System
+                            Design System
                           </span>
                         </Media>
                       </Media>
                     </th>
-                    <td>$2,500 USD</td>
+                    <td>province 1</td>
                     <td>
                       <Badge color="" className="badge-dot mr-4">
                         <i className="bg-warning" />
@@ -228,12 +228,12 @@ const Tables = () => {
                         </a>
                         <Media>
                           <span className="mb-0 text-sm">
-                            Angular Now UI Kit PRO
+                            Detection of microplastic in Human Body 
                           </span>
                         </Media>
                       </Media>
                     </th>
-                    <td>$1,800 USD</td>
+                    <td>Bhaktapur</td>
                     <td>
                       <Badge color="" className="badge-dot">
                         <i className="bg-success" />
