@@ -10,6 +10,33 @@ import * as turf from '@turf/turf'; // Import Turf.js library
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
 
+/** CompassControl */
+import CompassControl from '@mapbox-controls/compass';
+import '@mapbox-controls/compass/src/index.css';
+/** ImageControl */
+import ImageControl from '@mapbox-controls/image';
+import '@mapbox-controls/image/src/index.css';
+/** InspectControl */
+import InspectControl from '@mapbox-controls/inspect';
+import '@mapbox-controls/inspect/src/index.css';
+/** LanguageControl */
+import LanguageControl from '@mapbox-controls/language';
+/** RulerControl */
+import RulerControl from '@mapbox-controls/ruler';
+import '@mapbox-controls/ruler/src/index.css';
+/** StylesControl */
+import StylesControl from '@mapbox-controls/styles';
+import '@mapbox-controls/styles/src/index.css';
+/** TooltipControl */
+import TooltipControl from '@mapbox-controls/tooltip';
+import '@mapbox-controls/tooltip/src/index.css';
+/** ZoomControl */
+import ZoomControl from '@mapbox-controls/zoom';
+import '@mapbox-controls/zoom/src/index.css';
+// Export Control
+import { MapboxExportControl, Size, PageOrientation, Format, DPI} from "@watergis/mapbox-gl-export";
+// import '@watergis/mapbox-gl-export/css/styles.css';
+
 const Maps = () => {
   mapboxgl.accessToken = process.env.REACT_APP_TOKEN;
   const mapContainer = useRef(null);
@@ -34,7 +61,13 @@ const Maps = () => {
     });
 
     // Add fullscreen control
-    map.current.addControl(new mapboxgl.FullscreenControl());
+    map.current.addControl(new mapboxgl.FullscreenControl(),'bottom-right');
+
+    // Add Zoom control
+    map.current.addControl(new mapboxgl.NavigationControl(),'bottom-left');
+
+    // Add Compass control
+    // map.current.addControl(new CompassControl({ instant: true }), 'bottom-right');
 
     // Add Geocoder control for search box
     const geocoder = new MapboxGeocoder({
@@ -56,7 +89,7 @@ const Maps = () => {
 
     // Initialize the drawing tool
     draw.current = new MapboxDraw({
-      displayControlsDefault: false,
+      displayControlsDefault: true,
       controls: {
         polygon: true,
         trash: true
@@ -69,8 +102,40 @@ const Maps = () => {
     map.current.on('draw.delete', updateArea);
     map.current.on('draw.update', updateArea);
 
+    // Add Tooltip control
+    // map.current.on('mousemove', (e) => {
+    //   const features = map.current.queryRenderedFeatures(e.point);
+    //   if (features.length > 0) {
+    //     const tooltip = new mapboxgl.Popup()
+    //       .setLngLat(e.lngLat)
+    //       .setHTML(`<p>${features[0].properties.name}</p>`)
+    //       .addTo(map.current);
+    //   } else {
+    //     map.current.getCanvas().style.cursor = '';
+    //   }
+    // });
 
-    
+    // Add Language control
+    map.current.addControl(new LanguageControl(), 'top-right');
+
+    // Add Styles control
+    map.current.addControl(new StylesControl({
+      compact: true
+    }), 'bottom-left');
+
+  
+    map.current.addControl(new RulerControl(), 'top-right');
+
+    // create control with specified options
+    map.current.addControl(new MapboxExportControl({
+        PageSize: Size.A3,
+        PageOrientation: PageOrientation.Portrait,
+        Format: Format.PNG,
+        DPI: DPI[96],
+        Crosshair: true,
+        PrintableArea: true,
+        accessToken:mapboxgl.accessToken
+    }), 'top-right');
 
   }, []);
 
