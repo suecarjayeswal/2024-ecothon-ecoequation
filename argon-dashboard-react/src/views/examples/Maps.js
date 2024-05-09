@@ -1,25 +1,12 @@
-/*!
-
-=========================================================
-* Argon Dashboard React - v1.2.4
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-react
-* Copyright 2024 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import 'mapbox-gl/dist/mapbox-gl.css';
 import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from 'mapbox-gl';
 import { Container, Row } from "reactstrap";
 import Header from "components/Headers/Header.js";
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+
 
 const Maps = () => {
   
@@ -46,8 +33,29 @@ const Maps = () => {
 
     // Add fullscreen control
     map.current.addControl(new mapboxgl.FullscreenControl());
- 
-  });
+
+    // Add Geocoder control for search box
+    const geocoder = new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl,
+      placeholder: 'Search for a location',
+      marker: true, // Disable default marker
+      bbox: [-180, -90, 180, 90], // Limit search to the world bounds
+      // countries: 'us', // Limit search to the United States
+      // minLength: 2, // Minimum number of characters before a search is performed
+      flyTo: true, // Do not fly to the searched location
+      zoom: 10 // Set the zoom level after a location is found
+    });
+
+    // Add custom CSS class to the Geocoder input container
+    geocoder.on('result', function (e) {
+      document.querySelector('.mapboxgl-ctrl-geocoder--input').classList.add('custom-geocoder-input');
+    });
+
+    map.current.addControl(geocoder);
+
+  }, []);
+
 
   return (
     <>
