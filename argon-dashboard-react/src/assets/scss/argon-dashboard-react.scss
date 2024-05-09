@@ -84,6 +84,7 @@
 .map-container {
     height: 500px;
   }
+
   .latLonLive {
     background-color: rgb(35 55 75 / 90%);
     color: #fff;
@@ -152,4 +153,8 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: 70%;
+  }
+
+  .btn.active{
+    color: blue;
   }

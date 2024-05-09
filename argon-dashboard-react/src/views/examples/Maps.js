@@ -1,7 +1,7 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from 'mapbox-gl';
-import { Container, Row } from "reactstrap";
+import { Container, Row, Button, Form, FormGroup, Input } from "reactstrap";
 import Header from "components/Headers/Header.js";
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import MapboxDraw from "@mapbox/mapbox-gl-draw";
@@ -37,6 +37,10 @@ import '@mapbox-controls/zoom/src/index.css';
 import { MapboxExportControl, Size, PageOrientation, Format, DPI} from "@watergis/mapbox-gl-export";
 // import '@watergis/mapbox-gl-export/css/styles.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCrosshairs, faLocationCrosshairs, faRefresh } from '@fortawesome/free-solid-svg-icons';
+
+
 const Maps = () => {
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -44,7 +48,8 @@ const Maps = () => {
   const [lng, setLng] = useState(85.2872);
   const [lat, setLat] = useState(27.6515);
   const [zoom, setZoom] = useState(12);
-
+  const activeButtonRef = useRef("reset");
+  
   useEffect(() => {
     mapboxgl.accessToken = process.env.REACT_APP_TOKEN;
   
@@ -66,6 +71,8 @@ const Maps = () => {
         setLng(lng.toFixed(4));
         setLat(lat.toFixed(4));
       });
+
+      
     };
 
     const addMapControls = () => {
@@ -107,6 +114,7 @@ const Maps = () => {
       map.current.on('draw.create', updateArea);
       map.current.on('draw.delete', updateArea);
       map.current.on('draw.update', updateArea);
+      map.current.on('click', handleMapClick);
     };
   
     initializeMap();
@@ -133,16 +141,63 @@ const Maps = () => {
     }
   }
 
+  const handleButtonClick = (buttonType) => {
+    activeButtonRef.current = buttonType;
+  };
+  const handleMapClick = (e) => {
+
+    if (activeButtonRef.current != "reset") {
+      const { lng, lat } = e.lngLat;
+      addMarker(lng, lat);
+    }
+  };
+  const addMarker = (lng, lat) => {
+    const popupContent =
+      activeButtonRef.current === 'samplingStation'
+        ? 'Sampling Station'
+        : 'Pollutant Source';
+
+    const popup = new mapboxgl.Popup({ offset: 25 }).setText(popupContent);
+
+    const marker = new mapboxgl.Marker({
+      color: activeButtonRef.current === 'samplingStation' ? 'blue' : 'red',
+    })
+      .setLngLat([lng, lat])
+      .setPopup(popup) // Attach popup to marker
+      .addTo(map.current);
+  };
   return (
     <>
       <Header />
       <Container className="mt--7" fluid>
         <Row>
           <div className="col">
-            <div ref={mapContainer} className="map-container" />
+            <div ref={mapContainer} className="map-container"  />
             <span className="latLonLive"> Longitude: {lng} | Latitude: {lat}</span>
           </div>
+          <div></div>
         </Row>
+        <div> <div className="button-group">
+          <span> Add Marker:</span><br></br>
+        <button
+          className={`btn  ${activeButtonRef.current === 'samplingStation' && 'active'}`}
+          onClick={() => handleButtonClick('samplingStation')}
+        >
+          <FontAwesomeIcon icon={faLocationCrosshairs} /> Sampling Station
+        </button>
+        <button
+          className={`btn  ${activeButtonRef.current === 'pollutantSource' && 'active'}`}
+          onClick={() => handleButtonClick('pollutantSource')}
+        >
+          <FontAwesomeIcon icon={faCrosshairs} /> Pollutant Source
+        </button>
+        <button
+          className={`btn `}
+          onClick={() => handleButtonClick('reset')}
+        >
+          <FontAwesomeIcon icon={faRefresh} /> Reset
+        </button>
+      </div></div>
       </Container>
     </>
   );
