@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/2024-ecothon-ecoequation/static/css/main.3bba26dc.css",
-    "main.js": "/2024-ecothon-ecoequation/static/js/main.35a050f7.js",
+    "main.js": "/2024-ecothon-ecoequation/static/js/main.15f403fd.js",
     "static/js/149.e5daea0a.chunk.js": "/2024-ecothon-ecoequation/static/js/149.e5daea0a.chunk.js",
     "static/js/644.87de8998.chunk.js": "/2024-ecothon-ecoequation/static/js/644.87de8998.chunk.js",
     "static/js/371.cf7c6379.chunk.js": "/2024-ecothon-ecoequation/static/js/371.cf7c6379.chunk.js",
@@ -16,9 +16,8 @@
     "static/media/team-4-800x800.jpg": "/2024-ecothon-ecoequation/static/media/team-4-800x800.99c612eb60728a5aeeb0.jpg",
     "static/media/fa-brands-400.woff2": "/2024-ecothon-ecoequation/static/media/fa-brands-400.8d3cabfc66809162fb4d.woff2",
     "static/media/fa-regular-400.ttf": "/2024-ecothon-ecoequation/static/media/fa-regular-400.adc51aab4d771ab65f81.ttf",
-    "static/media/ecoEquationLogo.png": "/2024-ecothon-ecoequation/static/media/ecoEquationLogo.9e50b86a23597338bb5e.png",
-    "static/media/argon-react.png": "/2024-ecothon-ecoequation/static/media/argon-react.128d71d316a8e92aff4a.png",
-    "static/media/argon-react-white.png": "/2024-ecothon-ecoequation/static/media/argon-react-white.e4dd3b41697ada43fdcb.png",
+    "static/media/argon-react-white.png": "/2024-ecothon-ecoequation/static/media/argon-react-white.9e50b86a23597338bb5e.png",
+    "static/media/argon-react.png": "/2024-ecothon-ecoequation/static/media/argon-react.9e50b86a23597338bb5e.png",
     "static/media/react.jpg": "/2024-ecothon-ecoequation/static/media/react.0e8c90660cd0ac1c3e75.jpg",
     "static/media/fa-regular-400.woff2": "/2024-ecothon-ecoequation/static/media/fa-regular-400.e931bc0d14f5bbb1da22.woff2",
     "static/media/angular.jpg": "/2024-ecothon-ecoequation/static/media/angular.b50456665f80ad7ac7de.jpg",
@@ -37,6 +36,6 @@
   },
   "entrypoints": [
     "static/css/main.3bba26dc.css",
-    "static/js/main.35a050f7.js"
+    "static/js/main.15f403fd.js"
   ]
 }
