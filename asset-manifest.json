@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/2024-ecothon-ecoequation/static/css/main.3bba26dc.css",
-    "main.js": "/2024-ecothon-ecoequation/static/js/main.1e29d832.js",
+    "main.js": "/2024-ecothon-ecoequation/static/js/main.35a050f7.js",
     "static/js/149.e5daea0a.chunk.js": "/2024-ecothon-ecoequation/static/js/149.e5daea0a.chunk.js",
     "static/js/644.87de8998.chunk.js": "/2024-ecothon-ecoequation/static/js/644.87de8998.chunk.js",
     "static/js/371.cf7c6379.chunk.js": "/2024-ecothon-ecoequation/static/js/371.cf7c6379.chunk.js",
@@ -37,6 +37,6 @@
   },
   "entrypoints": [
     "static/css/main.3bba26dc.css",
-    "static/js/main.1e29d832.js"
+    "static/js/main.35a050f7.js"
   ]
 }
