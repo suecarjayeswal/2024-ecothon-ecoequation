@@ -238,19 +238,19 @@ const Sidebar = (props) => {
             <NavItem>
               <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/overview?ref=adr-admin-sidebar">
                 <i className="ni ni-spaceship" />
-                Getting started
+                {/* Getting started */}
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/colors?ref=adr-admin-sidebar">
                 <i className="ni ni-palette" />
-                Foundation
+                {/* Foundation */}
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/alerts?ref=adr-admin-sidebar">
                 <i className="ni ni-ui-04" />
-                Components
+                {/* Components */}
               </NavLink>
             </NavItem>
           </Nav>
@@ -258,7 +258,7 @@ const Sidebar = (props) => {
             <NavItem className="active-pro active">
               <NavLink href="https://www.creative-tim.com/product/argon-dashboard-pro-react?ref=adr-admin-sidebar">
                 <i className="ni ni-spaceship" />
-                Upgrade to PRO
+                {/* Upgrade to PRO */}
               </NavLink>
             </NavItem>
           </Nav>

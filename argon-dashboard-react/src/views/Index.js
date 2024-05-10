@@ -222,7 +222,7 @@ const Index = (props) => {
             </Card>
           </Col>
           <Col xl="4">
-            <Card className="shadow">
+            {/* <Card className="shadow">
               <CardHeader className="border-0">
                 <Row className="align-items-center">
                   <div className="col">
@@ -327,7 +327,7 @@ const Index = (props) => {
                   </tr>
                 </tbody>
               </Table>
-            </Card>
+            </Card> */}
           </Col>
         </Row>
       </Container>
