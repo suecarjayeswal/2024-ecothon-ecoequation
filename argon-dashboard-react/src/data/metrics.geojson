@@ -1,0 +1,318 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA01",
+          "substrate_type": "(BER, BAU, STO, PEB, GRA, SAN, CL)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.40448, 27.79868]
+        },
+        "id": 0
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA02",
+          "substrate_type": "(BAU, STO, PEB, GRA, SAN)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.42343, 27.78495]
+        },
+        "id": 1
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA03",
+          "substrate_type": "(BER, BAU, STO, PEB, GRA, SAN)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.42378, 27.78143]
+        },
+        "id": 2
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA04",
+          "substrate_type": "(BER, BAU, STO, PEB, GRA, SAN, CL)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.42447, 27.77935]
+        },
+        "id": 3
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA05",
+          "substrate_type": "(BER, BAU, STO, PEB, GRA, SAN)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.42492, 27.77518]
+        },
+        "id": 4
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA06",
+          "substrate_type": "(BER, BAU, STO, PEB, SAN)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.42642, 27.77168]
+        },
+        "id": 5
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA07",
+          "substrate_type": "(BER, BAU, STO, PEB, GRA, SAN)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.42663, 27.77032]
+        },
+        "id": 6
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA08",
+          "substrate_type": "(BER, BAU, STO, PEB, GRA, SAN, CL)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.42093, 27.7581]
+        },
+        "id": 7
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA09",
+          "substrate_type": "(STO, PEB, GRA, SAN)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.41717, 27.74437]
+        },
+        "id": 8
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA10",
+          "substrate_type": "(PEB, GRA, SAN, CLY)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.39663, 27.73587]
+        },
+        "id": 9
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA11",
+          "substrate_type": "(BAU, STO, PEB, GRA, SAN, CLY)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.38887, 27.73947]
+        },
+        "id": 10
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA12",
+          "substrate_type": "(STO, PEB, GRA, SAN, CLY, SLG)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.35457, 27.7106]
+        },
+        "id": 11
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA13",
+          "substrate_type": "(PEB, GRA, SAN, CLY, SLG)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.34905, 27.70633]
+        },
+        "id": 12
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA14",
+          "substrate_type": "(STO, SLG)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.34328, 27.68465]
+        },
+        "id": 13
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA15",
+          "substrate_type": "(STO, SAN, SLG)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.33027, 27.68033]
+        },
+        "id": 14
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA16",
+          "substrate_type": "(SAN, CLY, SLG)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.31183, 27.69163]
+        },
+        "id": 15
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA17",
+          "substrate_type": "(STO, PEB, SAN, SLG)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.30185, 27.69058]
+        },
+        "id": 16
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA18",
+          "substrate_type": "(STO, PEB, GRA, SAN, SLG)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.30027, 27.68562]
+        },
+        "id": 17
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA19",
+          "substrate_type": "(STO, CLY, SLG)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.29908, 27.68238]
+        },
+        "id": 18
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BA20",
+          "substrate_type": "(BER, BAU, STO, SLG)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.29368, 27.65758]
+        },
+        "id": 19
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "NAG",
+          "substrate_type": "(BER, BAU, STO, PEB, GRA, SAN, CL)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.42785, 27.77003]
+        },
+        "id": 20
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "MAN",
+          "substrate_type": "(STO, SAN, SLG)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.35053, 27.66818]
+        },
+        "id": 21
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BIS",
+          "substrate_type": "(STO, GRA, SAN, CLY, SLG)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.30138, 27.69215]
+        },
+        "id": 22
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "DHO",
+          "substrate_type": "(STO, SAN, SLG)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.34652, 27.72395]
+        },
+        "id": 23
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "NAK",
+          "substrate_type": "(BAU, STO, SLG)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.30543, 27.66238]
+        },
+        "id": 24
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "site_code": "BAL",
+          "substrate_type": "(BAU, STO, GRA, CLY, SLG)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [85.2978, 27.68532]
+        },
+        "id": 25
+      }
+    ]
+  }
+  

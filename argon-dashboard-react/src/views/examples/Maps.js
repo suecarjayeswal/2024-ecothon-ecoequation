@@ -64,17 +64,55 @@ const Maps = () => {
         center: [lng, lat],
         zoom: zoom
       });
-  
+    
       map.current.on('load', () => {
         addMapControls();
         initializeDraw();
+
+        map.current.addSource('metrics', {
+          type: 'geojson',
+          data: 'data/metrics.geojson'
+        });
+  
+        // Add layer for the GeoJSON data
+        map.current.addLayer({
+          id: 'metrics-blobs',
+          type: 'fill',
+          source: 'metrics',
+          paint: {
+            'fill-color': ['match',
+              ['get','site_code'],'BA01','green'
+            ]
+          }
+        },'metric-label');
+  
+        // Add hover popup
+        map.current.on('mouseenter', 'metrics-blobs', e => {
+          const coordinates = e.features[0].geometry.coordinates.slice();
+          const properties = e.features[0].properties;
+  
+          // Create popup
+          new mapboxgl.Popup()
+            .setLngLat(coordinates)
+            .setHTML(`<h3>Site: ${properties.SiteCode}</h3><p>Substrate Types: ${properties.SubstrateTypes.join(', ')}</p>`)
+            .addTo(map.current);
+        });
+  
+        // Remove popup on mouse leave
+        map.current.on('mouseleave', 'metrics-blobs', () => {
+          map.current.getCanvas().style.cursor = '';
+          map.current.getCanvas().title = '';
+          map.current.closePopup();
+        });
       });
+      
   
       map.current.on('mousemove', (e) => {
         const { lng, lat } = e.lngLat;
         setLng(lng.toFixed(4));
         setLat(lat.toFixed(4));
       });
+      
 
       
     };

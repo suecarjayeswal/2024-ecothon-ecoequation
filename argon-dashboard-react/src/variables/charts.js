@@ -319,7 +319,7 @@ let chartExample1 = {
           ticks: {
             callback: function (value) {
               if (!(value % 10)) {
-                return "$" + value + "k";
+                return  + value + " mg/L";
               }
             },
           },
@@ -349,7 +349,7 @@ let chartExample1 = {
       datasets: [
         {
           label: "Performance",
-          data: [0, 20, 10, 30, 15, 40, 20, 60, 60],
+          data: [10, 30, 20, 60, 30, 80, 40, 100],
         },
       ],
     };
@@ -360,7 +360,7 @@ let chartExample1 = {
       datasets: [
         {
           label: "Performance",
-          data: [0, 20, 5, 25, 10, 30, 15, 40, 40],
+          data: [5, 25, 10, 50, 20, 60, 30, 80],
         },
       ],
     };

@@ -36,7 +36,7 @@ const Header = () => {
                           tag="h5"
                           className="text-uppercase text-muted mb-0"
                         >
-                          New Uploads
+                          Updated Indicators
                         </CardTitle>
                         <span className="h2 font-weight-bold mb-0">
                           13
@@ -94,7 +94,7 @@ const Header = () => {
                           tag="h5"
                           className="text-uppercase text-muted mb-0"
                         >
-                          Community Support
+                          Impacted Households
                         </CardTitle>
                         <span className="h2 font-weight-bold mb-0">924</span>
                       </div>
@@ -108,7 +108,7 @@ const Header = () => {
                       <span className="text-warning mr-2">
                         <i className="fas fa-arrow-up" /> 33.10%
                       </span>{" "}
-                      <span className="text-nowrap">Support</span>
+                      <span className="text-nowrap">at risk</span>
                     </p>
                   </CardBody>
                 </Card>
@@ -122,7 +122,7 @@ const Header = () => {
                           tag="h5"
                           className="text-uppercase text-muted mb-0"
                         >
-                          Overall Reach
+                          Overall Mitigation Efforts
                         </CardTitle>
                         <span className="h2 font-weight-bold mb-0">22.3%</span>
                       </div>

@@ -97,7 +97,7 @@ const Profile = () => {
                 </Row>
                 <div className="text-center">
                   <h3>
-                    Dr. Hari Charan Acharya
+                    Dr. Sarita Acharya
                     <span className="font-weight-light">, 27</span>
                   </h3>
                   <div className="h5 font-weight-300">
@@ -159,7 +159,7 @@ const Profile = () => {
                           </label>
                           <Input
                             className="form-control-alternative"
-                            defaultValue="lucky.jesse"
+                            defaultValue="Sarita.acharya"
                             id="input-username"
                             placeholder="Username"
                             type="text"
@@ -177,7 +177,7 @@ const Profile = () => {
                           <Input
                             className="form-control-alternative"
                             id="input-email"
-                            placeholder="jesse@example.com"
+                            placeholder="acharya@example.com"
                             type="email"
                           />
                         </FormGroup>
@@ -194,7 +194,7 @@ const Profile = () => {
                           </label>
                           <Input
                             className="form-control-alternative"
-                            defaultValue="Lucky"
+                            defaultValue="Sarita"
                             id="input-first-name"
                             placeholder="First name"
                             type="text"
@@ -211,7 +211,7 @@ const Profile = () => {
                           </label>
                           <Input
                             className="form-control-alternative"
-                            defaultValue="Jesse"
+                            defaultValue="acharya"
                             id="input-last-name"
                             placeholder="Last name"
                             type="text"

@@ -38,7 +38,7 @@ const UserHeader = () => {
         <Container className="d-flex align-items-center" fluid>
           <Row>
             <Col lg="7" md="10">
-              <h1 className="display-2 text-white">Dr.Hari Charan Acharya</h1>
+              <h1 className="display-2 text-white">Dr.Sarita Acharya</h1>
               <p className="text-white mt-0 mb-5">
                 Field of expertise
                 Environmental Engineer, PHD
