@@ -40,6 +40,9 @@ import { MapboxExportControl, Size, PageOrientation, Format, DPI} from "@watergi
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCrosshairs, faLocationCrosshairs, faRefresh } from '@fortawesome/free-solid-svg-icons';
 
+import { useMap } from 'react-map-gl';
+import { GeoJSONLayer } from 'react-map-gl';
+
 
 const Maps = () => {
   const mapContainer = useRef(null);
@@ -49,6 +52,7 @@ const Maps = () => {
   const [lat, setLat] = useState(27.6515);
   const [zoom, setZoom] = useState(12);
   const activeButtonRef = useRef("reset");
+  const [geojsonData, setGeojsonData] = useState(null);
   
   useEffect(() => {
     mapboxgl.accessToken = process.env.REACT_APP_TOKEN;
@@ -119,6 +123,66 @@ const Maps = () => {
   
     initializeMap();
     enableControls();
+
+
+
+    const fetchEarthquakeData = async () => {
+      try {
+        const response = await fetch(
+          `https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&minmagnitude=1`
+        );
+        const data = await response.json();
+        map.current.addSource('earthquakes', {
+          type: 'geojson',
+          data
+   
+        });
+        map.current.addLayer({
+          id: 'earthquakes-viz',
+          type: 'circle',
+          source: 'earthquakes',
+          paint: {
+            'circle-radius': [
+              'case',
+              ['boolean', ['feature-state', 'hover'], false],
+              15,
+              5
+            ],
+            'circle-stroke-color': '#000',
+            'circle-stroke-width': 1,
+            'circle-color': [
+              'case',
+              ['boolean', ['feature-state', 'hover'], false],
+              '#FF0000',
+              '#0000FF'
+            ]
+          }
+        });
+      } catch (error) {
+        console.error('Error fetching earthquake data:', error);
+      }
+    };
+
+    fetchEarthquakeData();
+
+    map.current.on('mousemove', 'earthquakes-viz', (e) => {
+      console.log(e);
+      if (e.features.length > 0) {
+        
+        map.current.getCanvas().style.cursor = 'pointer';
+        const featureId = e.features[0].id; // Get the feature ID
+        if (featureId !== undefined && featureId !== null) { // Ensure feature ID is valid
+          map.current.setFeatureState(
+            { source: 'earthquakes', id: featureId }, // Provide feature ID
+            { hover: true }
+          );
+        }
+      }
+    });
+    
+    
+    
+
     return () => {
       map.current.remove();
     };
@@ -166,6 +230,51 @@ const Maps = () => {
       .setPopup(popup) // Attach popup to marker
       .addTo(map.current);
   };
+
+  const handleGeoJSONUpload = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    
+    reader.onload = (e) => {
+      const content = e.target.result;
+      setGeojsonData(JSON.parse(content));
+    };
+    
+    reader.readAsText(file);
+  };
+
+  // Render the uploaded GeoJSON data
+  const renderGeoJSON = () => {
+      if (!geojsonData) return null;
+
+      return geojsonData.features.map((feature, index) => (
+        <Feature key={index} geometry={feature.geometry} />
+      ));
+    };
+    const Feature = ({ geometry }) => {
+      // const map = useMap();
+    
+      // useEffect(() => {
+      //   if (!map || !geometry) return;
+    
+      //   const feature = {
+      //     type: "Feature",
+      //     properties: {},
+      //     geometry: geometry
+      //   };
+    
+      //   new GeoJSONLayer({
+      //     id: "uploaded-geojson",
+      //     data: feature
+      //   }).addTo(map);
+    
+      // }, [map, geometry]);
+    
+      return null;
+    };
+
+
+
   return (
     <>
       <Header />
@@ -177,6 +286,13 @@ const Maps = () => {
           </div>
           <div></div>
         </Row>
+        <div>
+            <input
+              type="file"
+              accept=".geojson"
+              onChange={handleGeoJSONUpload}
+            />
+          </div>
         <div> <div className="button-group">
           <span> Add Marker:</span><br></br>
         <button

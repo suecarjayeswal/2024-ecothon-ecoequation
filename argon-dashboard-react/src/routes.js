@@ -26,7 +26,7 @@ import Newpage from "views/examples/Newpage";
 import NayaPage from "views/examples/nayapage";
 var routes = [
   {
-    path: "/index",
+    path: "/",
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
     component: <Index />,

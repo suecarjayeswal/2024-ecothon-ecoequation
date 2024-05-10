@@ -22,8 +22,10 @@
   "bugs": {
     "url": "https://github.com/creativetimofficial/argon-dashboard-react/issues"
   },
-  "homepage": "https://demos.creative-tim.com/argon-dashboard-react/",
+  "homepage": "http://suecarjayeswal.github.io/2024-ecothon-ecoequation",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,6 +45,7 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@fortawesome/fontawesome-free": "6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@mapbox-controls/compass": "^1.2.0",
@@ -71,7 +74,7 @@
     "react-datetime": "3.2.0",
     "react-dom": "18.2.0",
     "react-map-gl": "^7.1.7",
-    "react-router-dom": "6.21.1",
+    "react-router-dom": "^6.21.1",
     "react-scripts": "^5.0.1",
     "reactstrap": "8.10.0",
     "sass": "1.69.5"
@@ -79,6 +82,7 @@
   "devDependencies": {
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
+    "gh-pages": "^6.1.1",
     "gulp": "^5.0.0",
     "gulp-append-prepend": "1.0.9",
     "typescript": "^5.4.5"
