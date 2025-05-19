@@ -1,5 +1,4 @@
 
-```markdown
 # Hydro-Insights: Environmental Sustainability Platform
 
 Welcome to Hydro-Insights, an open-source platform aimed at promoting environmental sustainability through computational mathematics. This project is developed by Team EcoEquations as part of the Ecothon hackathon.
